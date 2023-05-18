@@ -3,12 +3,7 @@ import 'package:flutter_maps/api/location_api_client.dart';
 
 void main() async {
   final locationApiClient = LocationApiClient();
-  final locations = await locationApiClient.getLocations(location: 'Vitoria');
-  final labels = <String>[];
-  for (final location in locations) {
-    labels.add(location.label);
-  }
-  print(labels);
+
   runApp(const MyApp());
 }
 
