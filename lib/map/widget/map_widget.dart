@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
+import 'package:flutter_maps/theme/app_colors.dart';
 import 'package:latlong2/latlong.dart';
 
 class MapWidget extends StatelessWidget {
@@ -51,6 +52,7 @@ class MapWidget extends StatelessWidget {
     return const Icon(
       Icons.place,
       size: 30,
+      color: AppColors.red,
     );
   }
 }
