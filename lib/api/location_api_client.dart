@@ -21,7 +21,7 @@ class LocationApiClient {
 
   static const String _forwardMethod = '/v1/forward';
 
-  static const String _apiKey = '';
+  static const String _apiKey = '499f444e464492650c145798410bba12';
 
   final _headers = {
     'Accept': 'application/json',

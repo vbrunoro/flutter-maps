@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_maps/api/location_api_client.dart';
 import 'package:flutter_maps/map/view/map_page.dart';
+import 'package:flutter_maps/repository/locations_repository.dart';
 import 'package:flutter_maps/theme/theme_data.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 void main() async {
   final locationApiClient = LocationApiClient();
+  final locationsRepository =
+      LocationsRepository(locationApiClient: locationApiClient);
 
-  runApp(const MyApp());
+  runApp(MyApp(locationsRepository: locationsRepository));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    super.key,
+    required LocationsRepository locationsRepository,
+  }) : _locationsRepository = locationsRepository;
+
+  final LocationsRepository _locationsRepository;
 
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: AppTheme.light,
-      home: const MapPage(),
+    return RepositoryProvider.value(
+      value: _locationsRepository,
+      child: MaterialApp(
+        supportedLocales: AppLocalizations.supportedLocales,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        title: 'Flutter Demo',
+        theme: AppTheme.light,
+        home: const MapPage(),
+      ),
     );
   }
 }

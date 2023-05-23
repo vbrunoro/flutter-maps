@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_maps/location_input/widgets/location_input_widget.dart';
 import 'package:flutter_maps/map/bloc/map_bloc.dart';
 import 'package:flutter_maps/map/bloc/map_event.dart';
 import 'package:flutter_maps/map/bloc/map_state.dart';
@@ -26,9 +27,21 @@ class _MapView extends StatelessWidget {
       builder: (context, state) {
         return Scaffold(
           body: MapWidget(
+            key: Key('map${state.latitude}${state.longitude}'),
             latitude: state.latitude,
             longitude: state.longitude,
           ),
+          floatingActionButton: LocationInput(
+            onSelected: (location) {
+              context.read<MapBloc>().add(
+                    ShowLocation(
+                      latitude: location.latitude,
+                      longitude: location.longitude,
+                    ),
+                  );
+            },
+          ),
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerTop,
         );
       },
     );

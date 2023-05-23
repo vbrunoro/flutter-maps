@@ -9,10 +9,10 @@ abstract class MapEvent extends Equatable {
 }
 
 class ShowLocation extends MapEvent {
-  final double latitude;
-  final double longitude;
   const ShowLocation({
     required this.latitude,
     required this.longitude,
   });
+  final double latitude;
+  final double longitude;
 }

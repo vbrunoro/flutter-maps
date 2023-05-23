@@ -1,8 +1,8 @@
 import 'package:flutter_maps/api/location_api_client.dart';
 import 'package:flutter_maps/models/location.dart';
 
-class LocationRepository {
-  const LocationRepository({required LocationApiClient locationApiClient})
+class LocationsRepository {
+  const LocationsRepository({required LocationApiClient locationApiClient})
       : _locationApiClient = locationApiClient;
 
   final LocationApiClient _locationApiClient;
